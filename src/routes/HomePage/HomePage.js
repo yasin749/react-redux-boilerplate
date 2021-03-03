@@ -1,15 +1,23 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-
-/* Layouts */
-import MasterLayout from '../../layouts/MasterLayout';
+import cx from 'classnames';
 
 /* Actions */
 import {actions as postActions} from '../../common/redux/posts/postActions';
 
+/* Layouts */
+import MasterLayout from '../../layouts/MasterLayout/MasterLayout';
+
+/* Components */
+import PostList from '../../partials/Post/List/PostList';
+
+/* Styles */
+import s from './home-page-module.scss'
+
 const HomePage = ({
-    dispatch,
+  dispatch,
+  posts,
 }) => {
     useEffect(() => {
         dispatch(postActions.getPosts());
@@ -17,8 +25,11 @@ const HomePage = ({
 
     return (
         <MasterLayout>
-            <div>
-                It's home page
+            <div className={cx('container', s.root)}>
+                {
+                    posts.length > 0 &&
+                    <PostList posts={posts}/>
+                }
             </div>
         </MasterLayout>
     );

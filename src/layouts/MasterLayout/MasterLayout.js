@@ -1,7 +1,7 @@
 import React from 'react';
 
 /* Components */
-import Header from '../partials/Header/Header';
+import Header from '../../partials/Header/Header';
 
 const MasterLayout = ({
     children,
